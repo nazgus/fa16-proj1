@@ -14,6 +14,7 @@
     trainer_path(id: @pokemon.trainer_id), it needed the trainer ID to know which one to show.
 
 # Question 5: Explain how putting this line "flash[:error] = @pokemon.errors.full_messages.to_sentence" shows error messages on your form.
+    The application.html.erb file renders all the messages sent to _ messages.html.erb, which is where we are sending the error whenever it is raised.
 
 # Give us feedback on the project and decal below!
 

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   patch 'capture/:id' => 'pokemons#capture', as: 'capture'
   patch 'damage/:id' => 'pokemons#damage', as: 'damage'
-  patch 'new/:id' => 'pokemons#new', as: 'new'
+  get 'new/:id' => 'pokemons#new', as: 'new'
+  post 'create' => 'pokemons#create', as: 'create'
 end

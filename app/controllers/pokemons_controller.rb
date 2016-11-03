@@ -21,16 +21,25 @@ class PokemonsController < ApplicationController
 
     def new
         @pokemon = Pokemon.new
-        # redirect_to
+
     end
 
     def create
+        @pokemon = Pokemon.new pokeparams
         @pokemon.level = 1
-        @pokemon.trainer_id = current_trainer
+        @pokemon.trainer_id = current_trainer.id
         @pokemon.health = 100
 
-        @pokemon.save
+        if @pokemon.save
+            redirect_to trainer_path(id: current_trainer.id)
+        else
+            redirect_to :back
+            flash[:error] = @pokemon.errors.full_messages.to_sentence
+        end
+    end
 
-        redirect_to trainer_path(id: current_trainer.id)
+    private
+    def pokeparams
+        params.require(:pokemon).permit(:name)
     end
 end
